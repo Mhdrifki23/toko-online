@@ -40,8 +40,9 @@
             <a class="nav-link active" aria-current="page" href="#">Bantuan</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2 ms-4" type="search" placeholder="Search" aria-label="Search" />
+        <form class="d-flex" role="search" onsubmit="event.preventDefault(); filterCards();">
+          <input id="searchInput" class="form-control me-2 ms-4" type="search" placeholder="Search"
+            aria-label="Search" oninput="filterCards()"/>
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
         <div class="icon">
@@ -70,9 +71,9 @@
           <li class="list-group-item"><i class="bi bi-chevron-right"></i>Otomotif</li>
         </ul>
       </div> -->
-    <div class="col-md-12">
-      <div id="carouselExample" class="carousel slide">
-        <div class="carousel-inner">
+    <div class="col-12 col-md-12">
+      <div id="carouselExample" class="carousel slide container mt-3">
+        <div class="carousel-inner" style="border-radius: 20px;">
           <div class="carousel-item active">
             <img src="./assets/Slide/slide1.jpg" data-mdb-lazy-animation="fadeIn" class="lazyload d-block w-100" />
           </div>
@@ -80,7 +81,7 @@
             <img src="./assets/Slide/slide2.jpg" data-mdb-lazy-animation="fadeIn" class="lazyload d-block w-100" />
           </div>
           <div class="carousel-item">
-            <img src="./assets/Slide/slide3.jpg" data-mdb-lazy-animation="fadeIn" class="lazyload d-block w-100" />z
+            <img src="./assets/Slide/slide3.jpg" data-mdb-lazy-animation="fadeIn" class="lazyload d-block w-100" />
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -95,10 +96,10 @@
       <h3 class="text-center fw-bold mt-4">PRODUK TERBARU</h3>
 
       <!-- BAJU -->
-      <div class="d-flex flex-wrap justify-content-center py-3 mb-4">
+      <div class="d-flex flex-wrap justify-content-center py-3 mb-4 container" id="productContainer">
         <div class="card mb-3 me-3" style="width: 18rem;">
           <img src="./assets/Product/jacket.jpg" data-mdb-lazy-animation="fadeIn" class="lazyload card-img-top"
-            alt="..." />
+            alt="Jacket" />
           <div class="card-body">
             <h5 class="card-title">Jacket</h5>
             <i class="bi bi-star-fill text-success"></i>
@@ -114,7 +115,7 @@
         </div>
         <div class="card mb-3 me-3" style="width: 18rem;">
           <img src="./assets/Product/polo.jpg" data-mdb-lazy-animation="fadeIn" class="lazyload card-img-top"
-            alt="..." />
+            alt="Polo Yordano" />
           <div class="card-body">
             <h5 class="card-title">Polo Yordano</h5>
             <i class="bi bi-star-fill text-success"></i>
@@ -130,7 +131,7 @@
         </div>
         <div class="card mb-3 me-3" style="width: 18rem;">
           <img src="./assets/Product/hoodie.jpg" data-mdb-lazy-animation="fadeIn" class="lazyload card-img-top"
-            alt="..." />
+            alt="Hoodie" />
           <div class="card-body">
             <h5 class="card-title">Hoodie</h5>
             <i class="bi bi-star-fill text-success"></i>
@@ -146,7 +147,7 @@
         </div>
         <div class="card mb-3 me-3" style="width: 18rem;">
           <img src="./assets/Product/jaket1.jpg" data-mdb-lazy-animation="fadeIn" class="lazyload card-img-top"
-            alt="..." />
+            alt="Jacket winter" />
           <div class="card-body">
             <h5 class="card-title">Jaket winter</h5>
             <i class="bi bi-star-fill text-success"></i>
@@ -165,7 +166,7 @@
         <!-- ELEKTRONIK -->
         <div class="card mb-3 me-3" style="width: 18rem;">
           <img src="./assets/Product/kamera.jpg" data-mdb-lazy-animation="fadeIn" class="lazyload card-img-top"
-            alt="..." />
+            alt="Cannon" />
           <div class="card-body">
             <h5 class="card-title">Cannon</h5>
             <i class="bi bi-star-fill text-success"></i>
@@ -181,7 +182,7 @@
         </div>
         <div class="card mb-3 me-3" style="width: 18rem;">
           <img src="./assets/Product/laptop.jpg" data-mdb-lazy-animation="fadeIn" class="lazyload card-img-top"
-            alt="..." />
+            alt="Laptop" />
           <div class="card-body">
             <h5 class="card-title">Laptop</h5>
             <i class="bi bi-star-fill text-success"></i>
@@ -197,7 +198,7 @@
         </div>
         <div class="card mb-3 me-3" style="width: 18rem;">
           <img src="./assets/Product/headphone.jpg" data-mdb-lazy-animation="fadeIn" class="lazyload card-img-top"
-            alt="..." />
+            alt="Headset Hyperx" />
           <div class="card-body">
             <h5 class="card-title">Headset Hyperx</h5>
             <i class="bi bi-star-fill text-success"></i>
@@ -213,9 +214,9 @@
         </div>
         <div class="card mb-3 me-3" style="width: 18rem;">
           <img src="./assets/Product/spiker1.jpg" data-mdb-lazy-animation="fadeIn" class="lazyload card-img-top"
-            alt="..." />
+            alt="Speaker Bluetooth" />
           <div class="card-body">
-            <h5 class="card-title">Spiker Bluetoot</h5>
+            <h5 class="card-title">Speaker Bluetooth</h5>
             <i class="bi bi-star-fill text-success"></i>
             <i class="bi bi-star-fill text-success"></i>
             <i class="bi bi-star-fill text-success"></i>
@@ -231,10 +232,17 @@
       </div>
     </div>
   </div>
+  <p id="notFound" class="mb-3 me-3 text-center text-dark" style="display: none;">
+    Barang tidak di temukan
+  </p>
   <!-- Akhir Sidebar -->
+  <footer class="bg-warning text-center text-dark py-3 fw-bold">
+    <p>&copy; 2024 Toko Online. All Rights Reserved.</p>
+  </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
